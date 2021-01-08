@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To Do List</title>
-  <script src="vendors/jquery.v3.5.1.js"></script>
-  <script src="scripts/client.js"></script>
-  <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-  <h1>connected!</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <script src="vendors/jquery.v3.5.1.js"></script>
+    <script src="scripts/client.js"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="inputBar">
+      <input id="taskIn" type="text" placeholder="task" />
+      <input id="dueDate" type="text" placeholder="due date" />
+      <select name="priority" id="priority">
+        <option value="!">!</option>
+        <option value="!!">!!</option>
+        <option value="!!!">!!!</option>
+      </select>
+      <button id="submitTask">send</button>
+    </div>
+    <div id="taskContainer"></div>
+  </body>
 </html>
