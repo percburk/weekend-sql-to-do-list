@@ -1,8 +1,8 @@
 [ ] create files
-  [ ] public - index.html, styles/style.css, scripts/client.js, vendors/jquery, images/icons
-  [ ] server - server.js, routes/route.js, modules/pool.js, 
-  [ ] .gitignore!
-  [ ] database.sql
+  [x] public - index.html, styles/style.css, scripts/client.js, vendors/jquery
+  [x] server - server.js, routes/route.js, modules/pool.js, 
+  [x] .gitignore!
+  [x] database.sql
   
 [ ] set up sql in postico
   [ ] create table called 'weekend-to-do-app'
@@ -11,7 +11,7 @@
   [ ] copy database info to project file
 
 [ ] set up server
-  [ ] install express and pg
+  [ ] install node, express, and pg
   [ ] create pool module, export!
   [ ] create route file for 'weekend-to-do-app', export!
 
