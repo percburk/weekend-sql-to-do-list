@@ -1,19 +1,19 @@
-[ ] create files
+[x] create files
   [x] public - index.html, styles/style.css, scripts/client.js, vendors/jquery
   [x] server - server.js, routes/route.js, modules/pool.js, 
   [x] .gitignore!
   [x] database.sql
   
-[ ] set up sql in postico
-  [ ] create table called 'weekend-to-do-app'
-  [ ] set database schema
-  [ ] enter sample information
-  [ ] copy database info to project file
+[x] set up sql in postico
+  [x] create table called 'weekend-to-do-app'
+  [x] set database schema
+  [x] enter sample information
+  [x] copy database info to project file
 
-[ ] set up server
-  [ ] install node, express, and pg
-  [ ] create pool module, export!
-  [ ] create route file for 'weekend-to-do-app', export!
+[x] set up server
+  [x] install node, express, and pg
+  [x] create pool module, export!
+  [x] create route file for 'weekend-to-do-app', export!
 
 [ ] html
   [ ] input bar for new tasks with different categories
