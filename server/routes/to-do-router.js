@@ -4,6 +4,9 @@ const router = express.Router();
 // database connection
 const pool = require('../modules/pool');
 
+// moment connection
+const moment = require('../modules/moment')
+
 // get route
 router.get('/', (req, res) => {
   const queryText = `SELECT * FROM "to_do_list" ORDER BY "done" DESC, "due_date"`;
@@ -11,7 +14,8 @@ router.get('/', (req, res) => {
   pool
     .query(queryText)
     .then((result) => {
-      res.send(result.rows);
+      let taskArray = dateFormatter(result.rows);
+      res.send(taskArray);
     })
     .catch((error) => {
       console.log('error in get', error);
@@ -101,5 +105,18 @@ router.delete('/:id', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+const dateFormatter = (array) => {
+  let now = moment().format("MMM Do")
+  let dateFormattedArray = array.forEach((item) => {
+    switch (item.due_date) {
+      
+
+
+    }
+
+  })
+  return dateFormattedArray;
+}
 
 module.exports = router;

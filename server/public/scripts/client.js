@@ -18,14 +18,13 @@ function getTasks() {
   })
     .then(function (response) {
       response.forEach((item) => {
-        let dueDate = displayDate(item.due_date);
         $('#taskContainer').append(`
           <div data-id="${item.id}">
             <div>
               <p>${item.task}</p>
             </div>
             <div>
-              <p>${dueDate}</p>
+              <p>${item.due_date}</p>
             </div>
             <div class="priority">
               <p>${item.priority}</p>
@@ -127,19 +126,4 @@ function deleteTask() {
       console.log('error in delete', error);
       alert('error deleting task.');
     });
-}
-
-function displayDate(date) {
-  const dateShort = moment(date).format('MMM Do');
-  const now = moment().format('MMM Do');
-  switch (dateShort) {
-    case null:
-      return '';
-      break;
-    case now:
-      return 'Today';
-      break;
-    default:
-      return dateShort;
-  }
 }
