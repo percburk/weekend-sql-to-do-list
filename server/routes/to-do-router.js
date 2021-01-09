@@ -6,12 +6,11 @@ const pool = require('../modules/pool');
 
 // get route
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "to_do_list" ORDER BY "id"`;
+  const queryText = `SELECT * FROM "to_do_list" ORDER BY "done" DESC, "due_date"`;
 
   pool
     .query(queryText)
     .then((result) => {
-      console.log(result.rows);
       res.send(result.rows);
     })
     .catch((error) => {
@@ -40,8 +39,7 @@ router.post('/', (req, res) => {
       newTask.priority,
       newTask.done,
     ])
-    .then((result) => {
-      console.log(result);
+    .then(() => {
       res.sendStatus(201);
     })
     .catch((error) => {
@@ -50,8 +48,59 @@ router.post('/', (req, res) => {
     });
 });
 
-// put route
+// put route to change done status
+router.put('/:id', (req, res) => {
+  let id = req.params.id;
+  let newStatus = req.body.done;
+
+  const queryText = `
+    UPDATE "to_do_list" SET "done" = $1 WHERE "id" = $2;`;
+
+  pool
+    .query(queryText, [newStatus, id])
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
+// put route to change priority
+router.put('/:id', (req, res) => {
+  let id = req.params.id;
+  let newPriority = req.body.priority;
+
+  const queryText = `
+    UPDATE "to_do_list" SET "priority" = $1 WHERE "id" = $2;`;
+
+  pool
+    .query(queryText, [newPriority, id])
+    .then((result) => {
+      console.log(result);
+      res.sendStatus(200);
+    })
+    .catch(() => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
 
 // delete route
+router.delete('/:id', (req, res) => {
+  let id = req.params.id;
+  const queryText = `DELETE FROM "to_do_list" WHERE "id" = $1;`;
+
+  pool
+    .query(queryText, [id])
+    .then(() => {
+      res.sendStatus(204);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
