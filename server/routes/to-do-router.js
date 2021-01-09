@@ -68,17 +68,16 @@ router.put('/:id', (req, res) => {
 });
 
 // put route to change priority
-router.put('/:id', (req, res) => {
+router.put('/priority/:id', (req, res) => {
   let id = req.params.id;
   let newPriority = req.body.priority;
-
+  
   const queryText = `
     UPDATE "to_do_list" SET "priority" = $1 WHERE "id" = $2;`;
 
   pool
     .query(queryText, [newPriority, id])
-    .then((result) => {
-      console.log(result);
+    .then(() => {
       res.sendStatus(200);
     })
     .catch(() => {

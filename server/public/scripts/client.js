@@ -18,13 +18,14 @@ function getTasks() {
   })
     .then(function (response) {
       response.forEach((item) => {
+        let dueDate = displayDate(item.due_date);
         $('#taskContainer').append(`
           <div data-id="${item.id}">
             <div>
               <p>${item.task}</p>
             </div>
             <div>
-              <p>${item.due_date}</p>
+              <p>${dueDate}</p>
             </div>
             <div class="priority">
               <p>${item.priority}</p>
@@ -95,14 +96,13 @@ function changePriority() {
   let id = $(this).parent().data('id');
   let priority = $(this).children().text();
   let newPriority = priority === '!' ? '!!' : priority === '!!' ? '!!!' : '!';
-  
+
   $.ajax({
     type: 'PUT',
-    url: `/todo/${id}`,
+    url: `/todo/priority/${id}`,
     data: { priority: newPriority },
   })
     .then(function (response) {
-      console.log(response);
       getTasks();
     })
     .catch(function (error) {
@@ -127,4 +127,19 @@ function deleteTask() {
       console.log('error in delete', error);
       alert('error deleting task.');
     });
+}
+
+function displayDate(date) {
+  const dateShort = moment(date).format('MMM Do');
+  const now = moment().format('MMM Do');
+  switch (dateShort) {
+    case null:
+      return '';
+      break;
+    case now:
+      return 'Today';
+      break;
+    default:
+      return dateShort;
+  }
 }

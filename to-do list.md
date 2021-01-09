@@ -15,29 +15,37 @@
   [x] create pool module, export!
   [x] create route file for 'weekend-to-do-app', export!
 
-[ ] html
-  [ ] input bar for new tasks with different categories
-  [ ] submit button to add new task
-  [ ] container for list of tasks
+[x] html
+  [x] input bar for new tasks with different categories
+  [x] submit button to add new task
+  [x] container for list of tasks
 
-[ ] get route
-  [ ] server - router to get info from sql, send to client
-  [ ] client - append info using jquery onto dom
+[x] get route
+  [x] server - router to get info from sql, send to client
+  [x] client - append info using jquery onto dom
 
-[ ] post route
+[x] post route
   [ ] data validation
-  [ ] client - click listener to send info to server, call get function
-  [ ] server - send new info to sql, remember to stop sql injection!
+  [x] client - click listener to send info to server, call get function
+  [x] server - send new info to sql, remember to stop sql injection!
 
-[ ] put route
-  [ ] client - click listener to change status to 'completed', call get function
-  [ ] server - send update query to sql to show completed
+[x] put route
+  [x] client - click listener to change status to 'completed', call get function
+  [x] server - send update query to sql to show completed
 
-[ ] delete route
-  [ ] client - click listener to get deleted task, call get function
-  [ ] server - send delete query to sql to delete task
+[x] put route 2 - to change priority level
+  [x] client - click listener to change status, upping one bang per click
+  [x] server - send update query to sql to show new priority level
 
-[ ] css
-  [ ] import and use icon set to display priority, complete, and delete
-  [ ] let's not use a table, instead appending divs for each task
+[x] delete route
+  [x] client - click listener to get deleted task, call get function
+  [x] server - send delete query to sql to delete task
+
+[ ] styling/dom
+  [x] import and use icon set to display priority, complete, and delete
+  [x] let's not use a table, instead appending divs for each task
   [ ] source favicon!
+  [ ] set up grid for dev elements
+  [ ] format time and date nicely, some logic to show strings for common days "today", "tomorrow", etc.
+  [ ] adjust jQuery hovers to show 'finger' over div elements which are acting as buttons
+
