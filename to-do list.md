@@ -44,7 +44,7 @@
 [x] styling/dom
   [x] import and use icon set to display priority, complete, and delete
   [x] let's not use a table, instead appending divs for each task
-  [ ] source favicon!
+  [x] source favicon!
   [x] set up grid for dev elements
   [x] format time and date nicely, some logic to show strings for common days "today", "tomorrow", etc.
   [x] adjust jQuery hovers to show 'finger' over div elements which are click listeners
