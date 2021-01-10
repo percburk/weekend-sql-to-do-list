@@ -3,19 +3,19 @@ const router = express.Router();
 
 // database connection
 const pool = require('../modules/pool');
-
 // moment connection
-const moment = require('../modules/moment')
+const moment = require('moment');
+
 
 // get route
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "to_do_list" ORDER BY "done" DESC, "due_date"`;
+  const queryText = `SELECT * FROM "to_do_list" ORDER BY "done", "due_date"`;
 
   pool
     .query(queryText)
     .then((result) => {
-      let taskArray = dateFormatter(result.rows);
-      res.send(taskArray);
+      dateFormatter(result.rows);
+      res.send(result.rows);
     })
     .catch((error) => {
       console.log('error in get', error);
@@ -28,9 +28,7 @@ router.post('/', (req, res) => {
   let newTask = req.body;
   console.log(newTask);
 
-  if (newTask.due_date === '') {
-    newTask.due_date = null;
-  }
+  let date = newTask.due_date === '' ? null : moment(newTask.due_date);
 
   const queryText = `
     INSERT INTO "to_do_list" ("task", "due_date", "priority", "done")
@@ -39,7 +37,7 @@ router.post('/', (req, res) => {
   pool
     .query(queryText, [
       newTask.task,
-      newTask.due_date,
+      date,
       newTask.priority,
       newTask.done,
     ])
@@ -75,7 +73,7 @@ router.put('/:id', (req, res) => {
 router.put('/priority/:id', (req, res) => {
   let id = req.params.id;
   let newPriority = req.body.priority;
-  
+
   const queryText = `
     UPDATE "to_do_list" SET "priority" = $1 WHERE "id" = $2;`;
 
@@ -106,17 +104,26 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-const dateFormatter = (array) => {
-  let now = moment().format("MMM Do")
-  let dateFormattedArray = array.forEach((item) => {
-    switch (item.due_date) {
-      
-
-
+const dateFormatter = (rows) => {
+  let today = moment().format('MMM D');
+  let tomorrow = moment().add(1, 'days').format('MMM D');
+  
+  return rows.forEach((item) => {
+    let dueDate = moment(item.due_date).format('MMM D');
+    switch (dueDate) {
+      case 'Invalid date':
+        item.due_date = '';
+        break;
+      case tomorrow:
+        item.due_date = 'Tomorrow';
+        break;
+      case today:
+        item.due_date = 'Today';
+        break;
+      default:
+        item.due_date = dueDate;
     }
-
-  })
-  return dateFormattedArray;
+  });
 }
 
 module.exports = router;

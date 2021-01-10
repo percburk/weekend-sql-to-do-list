@@ -18,22 +18,34 @@ function getTasks() {
   })
     .then(function (response) {
       response.forEach((item) => {
+        let doneClass = item.done === true ? 'doneTask' : '';
+        let bangClass =
+          item.done === true
+            ? 'none'
+            : item.priority === 'none'
+            ? 'none'
+            : item.priority === '!'
+            ? 'oneBang'
+            : item.priority === '!!'
+            ? 'twoBangs'
+            : 'threeBangs';
+
         $('#taskContainer').append(`
-          <div data-id="${item.id}">
+          <div class="taskEntry ${doneClass}" data-id="${item.id}">
             <div>
               <p>${item.task}</p>
             </div>
             <div>
-              <p>${item.due_date}</p>
+              <p class="dueDate">${item.due_date}</p>
             </div>
             <div class="priority">
-              <p>${item.priority}</p>
+              <p class="${bangClass}">${item.priority}</p>
             </div>
             <div class="done" data-status="${item.done}">
-              <i class="material-icons">done_outline</i>
+              <i class="material-icons check">done_outline</i> 
             </div>
             <div class="delete">
-              <i class="material-icons">clear</i>
+              <i class="material-icons ex">clear</i>
             </div>
           </div>
         `);
@@ -94,7 +106,14 @@ function toggleDone() {
 function changePriority() {
   let id = $(this).parent().data('id');
   let priority = $(this).children().text();
-  let newPriority = priority === '!' ? '!!' : priority === '!!' ? '!!!' : '!';
+  let newPriority =
+    priority === '!'
+      ? '!!'
+      : priority === '!!'
+      ? '!!!'
+      : priority === '!!!'
+      ? 'none'
+      : '!';
 
   $.ajax({
     type: 'PUT',

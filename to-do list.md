@@ -25,7 +25,7 @@
   [x] client - append info using jquery onto dom
 
 [x] post route
-  [ ] data validation
+  [x] data validation
   [x] client - click listener to send info to server, call get function
   [x] server - send new info to sql, remember to stop sql injection!
 
@@ -41,11 +41,11 @@
   [x] client - click listener to get deleted task, call get function
   [x] server - send delete query to sql to delete task
 
-[ ] styling/dom
+[x] styling/dom
   [x] import and use icon set to display priority, complete, and delete
   [x] let's not use a table, instead appending divs for each task
   [ ] source favicon!
-  [ ] set up grid for dev elements
-  [ ] format time and date nicely, some logic to show strings for common days "today", "tomorrow", etc.
-  [ ] adjust jQuery hovers to show 'finger' over div elements which are acting as buttons
+  [x] set up grid for dev elements
+  [x] format time and date nicely, some logic to show strings for common days "today", "tomorrow", etc.
+  [x] adjust jQuery hovers to show 'finger' over div elements which are click listeners
 
