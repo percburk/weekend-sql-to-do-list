@@ -65,6 +65,8 @@ function sendNewTask() {
     done: false,
   };
 
+  console.log(newTask);
+
   $.ajax({
     type: 'POST',
     url: '/todo',

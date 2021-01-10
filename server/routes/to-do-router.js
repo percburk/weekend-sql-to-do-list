@@ -9,7 +9,7 @@ const moment = require('moment');
 
 // get route
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "to_do_list" ORDER BY "done", "due_date"`;
+  const queryText = `SELECT * FROM "to_do_list" ORDER BY "done", "due_date", "id"`;
 
   pool
     .query(queryText)

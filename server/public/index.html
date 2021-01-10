@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <script src="vendors/jquery.v3.5.1.js"></script>
     <script src="scripts/client.js"></script>
-    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -19,30 +19,32 @@
     />
   </head>
   <body>
-    <div class="inputBar">
-      <div class="barContainer">
-        <i class="material-icons inputIcon">done_outline</i>
-        <div class="inputContainer">
-          <input id="taskIn" type="text" placeholder="task" />
+    <div class="headerBar">
+      <div class="inputBar">
+        <div class="barContainer">
+          <i class="material-icons inputIcon">done_outline</i>
+          <div class="inputContainer">
+            <input id="taskIn" type="text" placeholder="task" />
+          </div>
         </div>
-      </div>
-      <div class="barContainer">
-        <i class="material-icons inputIcon">calendar_today</i>
-        <div class="inputContainer">
-          <input id="dueDate" type="date" />
+        <div class="barContainer">
+          <i class="material-icons inputIcon">calendar_today</i>
+          <div class="inputContainer">
+            <input id="dueDate" type="date" />
+          </div>
         </div>
-      </div>
-      <div class="barContainer">
-        <label>PRIORITY</label>
-        <select name="priority" id="priority">
-          <option value="none">none</option>
-          <option value="!">!</option>
-          <option value="!!">!!</option>
-          <option value="!!!">!!!</option>
-        </select>
-      </div>
-      <div class="barContainer">
-        <button id="submitTask">SEND</button>
+        <div class="barContainer">
+          <label>PRIORITY</label>
+          <select name="priority" id="priority">
+            <option value="none">none</option>
+            <option value="!">!</option>
+            <option value="!!">!!</option>
+            <option value="!!!">!!!</option>
+          </select>
+        </div>
+        <div class="barContainer">
+          <button id="submitTask">SEND</button>
+        </div>
       </div>
     </div>
     <div id="taskContainer"></div>

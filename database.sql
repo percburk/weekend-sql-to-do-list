@@ -7,8 +7,11 @@ CREATE TABLE "to_do_list" (
 );
 
 INSERT INTO "to_do_list" ("task", "due_date", "priority", "done")
-VALUES ('Walk dog', '1-8-21', '!!!', false),
-('Target run', '1-9-21', '!', true),
-('Cook dinner', '1-10-21', 'none', false),
+VALUES ('Walk dog', '2021-01-12', '!!!', false),
+('Target run', '2021-02-12', '!', true),
+('Cook dinner', '2021-01-15', 'none', false),
 ('Do laundry', NULL, '!!', false),
 ('Get coffee', NULL, 'none', false);
+
+
+-- try entering today or tomorrow's date on a new task!!
